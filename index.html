@@ -79,8 +79,8 @@
         <button class="swatch green" data-hl="green" title="Green"></button>
       </div>
       <audio id="audio" autoplay preload="auto" playsinline muted>
-        <source src="./IELTS_Test1.mp3" type="audio/mpeg" />
-        <source src="./IELTS_Test1.mp3" type="audio/mp4" />
+        <source src="./audio/IELTS_Test1.mp3" type="audio/mpeg" />
+        <source src="./audio/IELTS_Test1.mp3" type="audio/mp4" />
       </audio>
 
       <!-- PART 1 -->
@@ -478,6 +478,8 @@ function wrapSelection(color){
 [...document.querySelectorAll('[data-hl]')].forEach(b=>b.addEventListener('click',()=>wrapSelection(b.getAttribute('data-hl'))));
 // Try to autoplay on page open (best-effort; browser may block sound until user interacts)
 (function attemptAutoplay(){
+
+
   const a=document.getElementById('audio');
   if(!a) return;
   const play=()=>a.play().catch(()=>{});
