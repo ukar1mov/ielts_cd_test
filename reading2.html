@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>sevenplus — Reading (Passage 2)</title>
+<style>
+  :root{--brand-blue:#1aa2c9;--brand-gray:#55595c;--bg:#f7f9fb;--panel:#fff;--text:#1b1f23;--line:#e5e8eb}
+  [data-theme="dark"]{--bg:#0e1116;--panel:#141922;--text:#e6edf3;--line:#2a2f38}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--text);font:15px/1.55 system-ui,-apple-system,Segoe UI,Roboto}
+  .appbar{position:sticky;top:0;background:var(--panel);border-bottom:1px solid var(--line);display:flex;gap:12px;align-items:center;padding:10px 16px;z-index:10}
+  .logo-text{font-size:1.2rem;text-decoration:none}
+  .meta{margin-left:auto;display:flex;gap:10px;align-items:center}
+  .btn{border:1px solid var(--line);background:var(--panel);padding:.55rem .9rem;border-radius:10px;cursor:pointer}
+  .btn.primary{background:var(--brand-blue);color:#fff;border-color:var(--brand-blue)}
+  .btn.ghost{background:transparent}
+  .btn.active{background:var(--brand-blue);color:#fff;border-color:var(--brand-blue);pointer-events:none}
+  main{max-width:1200px;margin:16px auto;padding:0 16px}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:16px}
+  .toolbar{display:flex;gap:8px;align-items:center;border:1px dashed var(--line);padding:8px;border-radius:10px;margin:10px 0}
+  .swatch{width:20px;height:20px;border-radius:4px;border:1px solid var(--line);cursor:pointer}
+  .swatch.yellow{background:#fff59d}
+  .swatch.green{background:#c8e6c9}
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  .panel{min-height:60vh;max-height:calc(100vh - 150px);overflow:auto;border:1px solid var(--line);border-radius:12px;padding:16px;background:var(--panel)}
+  h1,h2,h3{margin:.2rem 0}
+  .note{color:#667085}
+  .qblock{border:1px solid var(--line);border-radius:12px;padding:12px;margin:10px 0}
+  .options{display:grid;gap:6px;margin-top:8px}
+  input[type=text]{width:100%;padding:.5rem .6rem;border:1px solid var(--line);border-radius:10px}
+  footer.nav{display:flex;gap:8px;justify-content:center;margin:14px 0}
+  footer.nav a{ text-decoration:none }
+  .timer{
+  margin-left:8px;
+  padding:.25rem .55rem;
+  border:1px solid var(--line);
+  border-radius:10px;
+  background:var(--panel);
+  font-weight:600;
+  color:var(--brand-blue);
+  min-width:64px;
+  text-align:center;
+}
+
+</style>
+</head>
+<body>
+<header class="appbar">
+  <span class="logo-text"><strong style="color:var(--brand-blue)">seven</strong><strong style="color:var(--brand-gray)">plus</strong></span>
+  <span id="timer" class="timer" aria-live="polite">60:00</span>
+
+  <div class="meta">
+    <label style="display:flex;align-items:center;gap:8px;cursor:pointer">
+      <input id="themeToggle" type="checkbox" />
+      <span>🌓</span>
+    </label>
+  </div>
+</header>
+
+<main>
+  <div class="card">
+    <div class="toolbar"><span>Highlighter:</span>
+      <button class="swatch yellow" data-hl="yellow" title="Yellow"></button>
+      <button class="swatch green" data-hl="green" title="Green"></button>
+    </div>
+
+    <div class="grid">
+      <!-- LEFT: PASSAGE (scrollable) -->
+      <article id="passage" class="panel" tabindex="0">
+        <h2>READING PASSAGE 2</h2>
+        <p class="note">You should spend about 20 minutes on Questions 14–26, which are based on Reading Passage 2.</p>
+
+        <h2 style="text-align:center">The Return of the Elm?</h2>
+        <p style="text-align:center"><em>Mark Rowe investigates attempts to reintroduce elms to Britain</em></p>
+
+        <p><strong>A</strong> Around 25 million elms, accounting for 90% of all elm trees in the UK, died during the 1960s and ’70s of Dutch elm disease. In the aftermath, the elm, once so dominant in the British landscape, was largely forgotten. However, there’s now hope the elm may be reintroduced to the countryside of central and southern England. Any reintroduction will start from a very low base. ‘The impact of the disease is difficult to picture if you hadn’t seen what was there before,’ says Matt Elliot of the Woodland Trust. ‘You look at old photographs from the 1960s and it’s only then that you realise the impact [elms had] ... They were significant, large trees … then they were gone.’</p>
+
+        <p><strong>B</strong> The disease is caused by a fungus that blocks the elms’ vascular (water, nutrient and food transport) system, causing branches to wilt and die. A first epidemic, which occurred in the 1920s, gradually died down, but in the ’70s a second epidemic was triggered by shipments of elm from Canada. The wood came in the form of logs destined for boat building and its intact bark was perfect for the elm bark beetles that spread the deadly fungus. This time, the beetles carried a much more virulent strain that destroyed the vast majority of British elms.</p>
+
+        <p><strong>C</strong> Today, elms still exist in the southern English countryside but mostly only in low hedgerows between fields. ‘We have millions of small elms in hedgerows but they get targeted by the beetle as soon as they reach a certain size,’ says Karen Russell, co-author of the report <em>Where we are with elm</em>. Once the trunk of the elm reaches 10–15 centimetres or so in diameter, it becomes a perfect size for beetles to lay eggs and for the fungus to take hold. Yet mature specimens have been identified, in counties such as Cambridgeshire, that are hundreds of years old, and have mysteriously escaped the epidemic. The key, Russell says, is to identify and study those trees that have survived and work out why they stood tall when millions of others succumbed. Nevertheless, opportunities are limited as the number of these mature survivors is relatively small. ‘What are the reasons for their survival?’ asks Russell. ‘Avoidance, tolerance, resistance? We don’t know where the balance lies between the three. I don’t see how it can be entirely down to luck.’</p>
+
+        <p><strong>D</strong> For centuries, elm ran a close second to oak as the hardwood tree of choice in Britain and was in many instances the most prominent tree in the landscape. Not only was elm common in European forests, it became a key component of birch, ash and hazel woodlands. The use of elm is thought to go back to the Bronze Age, when it was widely used for tools. Elm was also the preferred material for shields and early swords. In the 18th century, it was planted more widely and its wood was used for items such as storage crates and flooring. It was also suitable for items that experienced high levels of impact and was used to build the keel of the 19th-century sailing ship Cutty Sark as well as mining equipment.</p>
+
+        <p><strong>E</strong> Given how ingrained elm is in British culture, it’s unsurprising the tree has many advocates. Amongst them is Peter Bourne of the National Elm Collection in Brighton. ‘I saw Dutch elm disease unfold as a small boy,’ he says. ‘The elm seemed to be part of rural England, but I remember watching trees just lose their leaves and that really stayed with me.’ Today, the city of Brighton’s elms total about 17,000. Local factors appear to have contributed to their survival. Strong winds from the sea make it difficult for the determined elm bark beetle to attack this coastal city’s elm population. However, the situation is precarious. ‘The beetles can just march in if we’re not careful, as the threat is right on our doorstep,’ says Bourne.</p>
+
+        <p><strong>F</strong> Any prospect of the elm returning relies heavily on trees being either resistant to, or tolerant of, the disease. This means a widespread reintroduction would involve existing or new hybrid strains derived from resistant, generally non-native elm species. A new generation of seedlings have been bred and tested to see if they can withstand the fungus by cutting a small slit on the bark and injecting a tiny amount of the pathogen. ‘The effects are very quick,’ says Russell. ‘You return in four to six weeks and trees that are resistant show no symptoms, whereas those that are susceptible show leaf loss and may even have died completely.’</p>
+
+        <p><strong>G</strong> All of this raises questions of social acceptance, acknowledges Russell. ‘If we’re putting elm back into the landscape, a small element of it is not native—are we bothered about that?’ For her, the environmental case for reintroducing elm is strong. ‘They will host wildlife, which is a good thing.’ Others are more wary. ‘On the face of it, it seems like a good idea,’ says Elliot. The problem, he suggests, is that, ‘You’re replacing a native species with a horticultural analogue. You’re effectively cloning.’ There’s also the risk of introducing new diseases. Rather than plant new elms, the Woodland Trust emphasises providing space to those elms that have survived independently. ‘Sometimes the best thing you can do is just give nature time to recover ... over time, you might get resistance,’ says Elliot.</p>
+
+        <p class="note"><em>* horticultural analogue: a cultivated plant species that is genetically similar to an existing species.</em></p>
+      </article>
+
+      <!-- RIGHT: QUESTIONS (scrollable) -->
+      <aside id="questions" class="panel" tabindex="0">
+        <h3>Questions 14–26</h3>
+      
+        <!-- 14–18 -->
+        <div class="qblock" id="q14-18">
+          <h4>Questions 14–18</h4>
+          <p>Reading Passage 2 has seven paragraphs, A–G.</p>
+          <p><strong>Which section contains the following information?</strong></p>
+          <p><span class="note">Choose the correct letter, <strong>A–G</strong>, in boxes 14–18 on your answer sheet.</span></p>
+          <p class="note"><em>NB</em> You may use any letter more than once.</p>
+      
+          <div class="options" style="gap:12px">
+            <label>14. reference to the research problems that arise from there being only a few surviving large elms
+              <select id="R14"><option></option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option><option>G</option></select>
+            </label>
+            <label>15. details of a difference of opinion about the value of reintroducing elms to Britain
+              <select id="R15"><option></option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option><option>G</option></select>
+            </label>
+            <label>16. reference to how Dutch elm disease was brought into Britain
+              <select id="R16"><option></option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option><option>G</option></select>
+            </label>
+            <label>17. a description of the conditions that have enabled a location in Britain to escape Dutch elm disease
+              <select id="R17"><option></option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option><option>G</option></select>
+            </label>
+            <label>18. reference to the stage at which young elms become vulnerable to Dutch elm disease
+              <select id="R18"><option></option><option>A</option><option>B</option><option>C</option><option>D</option><option>E</option><option>F</option><option>G</option></select>
+            </label>
+          </div>
+        </div>
+      
+        <!-- 19–23 -->
+        <div class="qblock" id="q19-23">
+          <h4>Questions 19–23</h4>
+          <p>Look at the following statements and the list of people below.</p>
+          <p><span class="note">Match each statement with the correct person, <strong>A</strong>, <strong>B</strong>, or <strong>C</strong>.<br>NB You may use any letter more than once.</span></p>
+      
+          <div style="border:1px solid var(--line);padding:12px;border-radius:10px;margin:10px 0;max-width:260px">
+            <strong>List of People</strong>
+            <div>A. Matt Elliot</div>
+            <div>B. Karen Russell</div>
+            <div>C. Peter Bourne</div>
+          </div>
+      
+          <div class="options" style="gap:12px">
+            <label>19. If a tree gets infected with Dutch elm disease, the damage rapidly becomes visible.
+              <select id="R19"><option></option><option>A</option><option>B</option><option>C</option></select>
+            </label>
+            <label>20. It may be better to wait and see if the mature elms that have survived continue to flourish.
+              <select id="R20"><option></option><option>A</option><option>B</option><option>C</option></select>
+            </label>
+            <label>21. There must be an explanation for the survival of some mature elms.
+              <select id="R21"><option></option><option>A</option><option>B</option><option>C</option></select>
+            </label>
+            <label>22. We need to be aware that insects carrying Dutch elm disease are not very far away.
+              <select id="R22"><option></option><option>A</option><option>B</option><option>C</option></select>
+            </label>
+            <label>23. You understand the effect Dutch elm disease has had when you see evidence of how prominent the tree once was.
+              <select id="R23"><option></option><option>A</option><option>B</option><option>C</option></select>
+            </label>
+          </div>
+        </div>
+      
+        <!-- 24–26 -->
+        <div class="qblock" id="q24-26">
+          <h4>Questions 24–26</h4>
+          <p><strong>Complete the summary below.</strong></p>
+          <p class="note">Choose <strong>ONE WORD ONLY</strong> from the passage for each answer.<br>Write your answers in boxes 24–26 on your answer sheet.</p>
+      
+          <div style="border:1px solid var(--line);padding:12px;border-radius:10px">
+            <h3 style="text-align:center;margin-top:0">Uses of a popular tree</h3>
+            <p>
+              For hundreds of years, the only tree that was more popular in Britain than elm was
+              <input id="R24" type="text" placeholder="24" style="max-width:120px" />.
+              Starting in the Bronze Age, many tools were made from elm, and people also used it to make weapons.
+              In the 18th century, it was grown to provide wood for boxes and
+              <input id="R25" type="text" placeholder="25" style="max-width:120px" />.
+              Due to its strength, elm was often used for mining equipment and the Cutty Sark's
+              <input id="R26" type="text" placeholder="26" style="max-width:160px" /> was also constructed from elm.
+            </p>
+          </div>
+        </div>
+      
+        <footer class="nav">
+          <a class="btn ghost" href="reading1.html">Passage 1</a>
+          <a class="btn active" href="reading2.html" aria-current="page">Passage 2</a>
+          <a class="btn ghost" href="reading3.html">Passage 3</a>
+        </footer>
+      </aside>
+      
+      
+    </div>
+  </div>
+</main>
+
+<script>
+// Dark mode
+const themeToggle=document.getElementById('themeToggle');
+if(themeToggle){
+  const saved=localStorage.getItem('sp_theme')||'light';
+  document.documentElement.setAttribute('data-theme', saved);
+  themeToggle.checked = saved==='dark';
+  themeToggle.addEventListener('change',()=>{
+    const mode=themeToggle.checked?'dark':'light';
+    document.documentElement.setAttribute('data-theme', mode);
+    localStorage.setItem('sp_theme', mode);
+  });
+}
+
+// Highlighters
+function wrapSelection(color){
+  const sel=window.getSelection(); if(!sel||sel.isCollapsed) return;
+  const range=sel.getRangeAt(0);
+  const span=document.createElement('span');
+  span.style.background = color==='yellow'? '#fff59d' : '#c8e6c9';
+  span.style.padding = '0 2px';
+  try{range.surroundContents(span);}catch{}
+  sel.removeAllRanges();
+}
+document.querySelectorAll('[data-hl]').forEach(b=>b.addEventListener('click',()=>wrapSelection(b.getAttribute('data-hl'))));
+
+// Autosave selects/inputs
+['R14','R15','R16','R17','R18','R19','R20','R21','R22','R23'].forEach(id=>{
+  const el=document.getElementById(id); if(!el) return;
+  const k='R_'+id; el.value=localStorage.getItem(k)||'';
+  el.addEventListener('change',()=>localStorage.setItem(k,el.value));
+});
+['R24','R25','R26'].forEach(id=>{
+  const el=document.getElementById(id); if(!el) return;
+  const k='R_'+id; el.value=localStorage.getItem(k)||'';
+  el.addEventListener('input',()=>localStorage.setItem(k,el.value));
+});
+</script>
+<script>
+    // Ensure timer badge exists in header
+    (function ensureTimerBadge(){
+      if(!document.getElementById('timer')){
+        const badge=document.createElement('span');
+        badge.id='timer';
+        badge.className='timer';
+        badge.textContent='60:00';
+        const header=document.querySelector('.appbar');
+        const meta=document.querySelector('.appbar .meta');
+        if(header) header.insertBefore(badge, meta || null);
+      }
+    })();
+    </script>
+    
+    <script>
+        // ===== Reading global 60-minute countdown (persists across passages) =====
+        (function readingCountdown(){
+          const DURATION_MS = 60 * 60 * 1000; // 60 minutes
+          const END_KEY = 'sp_reading_end_ts';
+          const DONE_KEY = 'sp_reading_done';
+          const timerEl = document.getElementById('timer');
+        
+          // 1) Start the timer the first time ANY reading page opens
+          let end = parseInt(localStorage.getItem(END_KEY)||'0', 10);
+          const now = Date.now();
+          if (!end || end < now) {
+            end = now + DURATION_MS;
+            localStorage.setItem(END_KEY, String(end));
+            localStorage.removeItem(DONE_KEY); // clear previous "done" flag if you restarted manually
+          }
+        
+          // 2) Ticker
+          function fmt(n){ return String(n).padStart(2,'0'); }
+          function tick(){
+            // if another tab already finished & submitted, follow along
+            if (localStorage.getItem(DONE_KEY)==='1') { timeUp(true); return; }
+        
+            const remain = parseInt(localStorage.getItem(END_KEY)||String(end),10) - Date.now();
+            if (remain <= 0){
+              if (timerEl) timerEl.textContent = '00:00';
+              timeUp(false);
+              return;
+            }
+            const totalSec = Math.floor(remain/1000);
+            const m = Math.floor(totalSec/60);
+            const s = totalSec % 60;
+            if (timerEl) timerEl.textContent = `${fmt(m)}:${fmt(s)}`;
+            setTimeout(tick, 250);
+          }
+        
+          // 3) Gather answers from the page
+          function collectAnswers(){
+            const answers = {};
+        
+            // radios (checked only)
+            document.querySelectorAll('input[type=radio]:checked').forEach(el=>{
+              answers[el.name] = el.value;
+            });
+        
+            // selects
+            document.querySelectorAll('select').forEach(el=>{
+              answers[el.id || el.name || `sel_${Math.random().toString(36).slice(2)}`] = el.value;
+            });
+        
+            // text inputs / textareas
+            document.querySelectorAll('input[type=text], textarea').forEach(el=>{
+              answers[el.id || el.name || `txt_${Math.random().toString(36).slice(2)}`] = el.value;
+            });
+        
+            // persist as a single blob + timestamp
+            localStorage.setItem('sp_reading_answers', JSON.stringify(answers));
+            localStorage.setItem('sp_reading_submitted_at', new Date().toISOString());
+          }
+        
+          // 4) Lock, submit, and navigate to Writing
+          function timeUp(fromOtherTab){
+            // prevent duplicate submits across tabs/pages
+            if (localStorage.getItem(DONE_KEY)==='1') {
+              // already submitted elsewhere — just navigate
+              window.location.href = 'writing.html';
+              return;
+            }
+        
+            try{
+              // disable inputs so candidates see it lock
+              document.querySelectorAll('input, select, textarea, button').forEach(el=>{
+                if (el.id !== 'themeToggle') el.disabled = true;
+              });
+            }catch{}
+        
+            collectAnswers();
+            localStorage.setItem(DONE_KEY, '1');
+        
+            // brief micro-delay so storage flushes, then go to Writing
+            setTimeout(()=>{ window.location.href = 'writing.html'; }, fromOtherTab ? 0 : 300);
+          }
+        
+          tick();
+        })();
+        </script>
+        
+</body>
+</html>

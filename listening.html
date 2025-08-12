@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>sevenplus — CD IELTS (Listening Test)</title>
+<style>
+  :root{--brand-blue:#1aa2c9;--brand-gray:#55595c;--bg:#f7f9fb;--panel:#fff;--text:#1b1f23;--line:#e5e8eb}
+  [data-theme="dark"]{--bg:#0e1116;--panel:#141922;--text:#e6edf3;--line:#2a2f38}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--text);font:15px/1.55 system-ui,-apple-system,Segoe UI,Roboto}
+  .appbar{position:sticky;top:0;background:var(--panel);border-bottom:1px solid var(--line);display:flex;gap:12px;align-items:center;padding:10px 16px}
+  .logo-text{font-size:1.2rem;text-decoration:none}
+  .meta{margin-left:auto;display:flex;gap:10px;align-items:center}
+  .btn{border:1px solid var(--line);background:var(--panel);padding:.55rem .9rem;border-radius:10px;cursor:pointer}
+  .btn.primary{background:var(--brand-blue);color:#fff;border-color:var(--brand-blue)}
+  main{max-width:1000px;margin:22px auto;padding:0 16px}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:22px;box-shadow:0 8px 24px rgba(0,0,0,.05)}
+  .screen{display:none}
+  .screen.active{display:block}
+  .spacer{height:12px}
+  /* Welcome */
+  #screen-welcome .card{display:grid;gap:14px;background:linear-gradient(135deg, rgba(26,162,201,.06), transparent) , var(--panel)}
+  .field{display:flex;flex-direction:column;gap:6px}
+  .field input{padding:.7rem .8rem;border:1px solid var(--line);border-radius:12px}
+  /* Tables & MCQs */
+  table.form-table{width:100%;border-collapse:separate;border-spacing:0}
+  table.form-table th,table.form-table td{border:1px solid var(--line);padding:10px;vertical-align:top}
+  table.form-table th{background:rgba(26,162,201,.08);text-align:left}
+  input.answer{width:100%;padding:.45rem .6rem;border:1px solid var(--line);border-radius:10px}
+  small.note{color:#667085}
+  footer.part-nav{display:flex;gap:8px;justify-content:center;margin-top:14px}
+  .mcq{border:1px solid var(--line);border-radius:12px;padding:12px;margin-top:10px}
+  .mcq h4{margin:0 0 6px 0}
+  .options{display:grid;gap:8px;margin-top:8px}
+  .options label{display:flex;gap:8px;align-items:flex-start}
+  /* Highlighter */
+  .toolbar{display:flex;gap:8px;align-items:center;border:1px dashed var(--line);padding:8px;border-radius:10px;margin:10px 0}
+  .swatch{width:20px;height:20px;border-radius:4px;border:1px solid var(--line);cursor:pointer}
+  .swatch.yellow{background:#fff59d}
+  .swatch.green{background:#c8e6c9}
+</style>
+</head>
+<body>
+<header class="appbar">
+  <span class="logo-text"><strong style="color:var(--brand-blue)">seven</strong><strong style="color:var(--brand-gray)">plus</strong></span>
+  <div class="meta">
+    <label class="switch" style="display:flex;align-items:center;gap:8px;cursor:pointer">
+      <input id="themeToggle" type="checkbox" />
+      <span>🌓</span>
+    </label>
+  </div>
+</header>
+<main>
+  <!-- WELCOME -->
+  <section id="screen-welcome" class="screen active">
+    <div class="card">
+      <div>
+        <h1 style="margin:0 0 6px 0;font-size:1.6rem"><strong style="color:var(--brand-blue)">seven</strong><strong style="color:var(--brand-gray)">plus</strong> — CD IELTS</h1>
+        <p style="margin:0 0 8px 0;color:#64707d">Please enter your details. Listening Part 1 will start automatically.</p>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+        <label class="field">Full name<input id="fullName" type="text" placeholder="e.g., Ulug'bek Karimov" /></label>
+        <label class="field">Candidate number<input id="candidateNumber" type="text" inputmode="numeric" placeholder="e.g., SP0101" /></label>
+      </div>
+      <div class="spacer"></div>
+      <div style="display:flex;justify-content:center;margin-top:12px">
+        <button id="startBtn" class="btn primary lg">Start test</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- LISTENING -->
+  <section id="screen-listening" class="screen">
+    <div class="card">
+      <div class="section-header"><h2>Listening</h2></div>
+      <div class="toolbar"><span>Highlighter:</span>
+        <button class="swatch yellow" data-hl="yellow" title="Yellow"></button>
+        <button class="swatch green" data-hl="green" title="Green"></button>
+      </div>
+      <audio id="audio" autoplay preload="auto" playsinline muted>
+        <source src="./IELTS_Test1.mp3" type="audio/mpeg" />
+        <source src="./IELTS_Test1.mp3" type="audio/mp4" />
+      </audio>
+
+      <!-- PART 1 -->
+      <div id="part1">
+        <h3>Part 1</h3>
+        <p><em>Questions 1–10</em>. Complete the form below. Write <strong>ONE WORD AND/OR A NUMBER</strong> for each answer.</p>
+        <table class="form-table">
+          <thead>
+            <tr>
+              <th style="width:22%">Name of Restaurant</th>
+              <th style="width:22%">Location</th>
+              <th style="width:28%">Reason for Recommendation</th>
+              <th>Other Comments</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>The Junction</td>
+              <td>Greyson Street, near the station</td>
+              <td>Good for people who are especially keen on <input id="L1" class="answer" placeholder="1" /></td>
+              <td>Quite expensive. The <input id="L2" class="answer" placeholder="2" /> is a good place for a drink.</td>
+            </tr>
+            <tr>
+              <td>Paloma</td>
+              <td>In Bow Street, next to the cinema</td>
+              <td><input id="L3" class="answer" placeholder="3" /> food, good for sharing</td>
+              <td>Staff are very friendly. Need to pay £50 deposit. A limited selection of <input id="L4" class="answer" placeholder="4" /> food on the menu.</td>
+            </tr>
+            <tr>
+              <td>The <input id="L6name" class="answer" placeholder="5" /></td>
+              <td>At the top of a <input id="L6loc" class="answer" placeholder="6" /></td>
+              <td>A famous chef. All the <input id="L7" class="answer" placeholder="7" /> are very good. Only uses <input id="L8" class="answer" placeholder="8" /> ingredients.</td>
+              <td>Set lunch costs: £<input id="L9" class="answer" placeholder="9" style="max-width:100px" /> per person. Portions probably of <input id="L10" class="answer" placeholder="10" style="max-width:140px" /> size.</td>
+            </tr>
+          </tbody>
+        </table>
+        <small class="note">Answers autosave in your browser.</small>
+      </div>
+
+      <!-- PART 2 -->
+      <div id="part2" style="display:none">
+        <h3>Part 2</h3>
+        <p><em>Questions 11–16</em> Choose the correct letter, A, B, or C.</p>
+        <div class="mcq"><h4>11. Heather says pottery differs from other art forms because</h4>
+          <div class="options">
+            <label><input type="radio" name="L11" value="A"> A it lasts longer in the ground.</label>
+            <label><input type="radio" name="L11" value="B"> B it is practised by more people.</label>
+            <label><input type="radio" name="L11" value="C"> C it can be repaired more easily.</label>
+          </div>
+        </div>
+        <div class="mcq"><h4>12. Archaeologists sometimes identify the use of ancient pottery from</h4>
+          <div class="options">
+            <label><input type="radio" name="L12" value="A"> A the clay it was made with.</label>
+            <label><input type="radio" name="L12" value="B"> B the marks that are on it.</label>
+            <label><input type="radio" name="L12" value="C"> C the basic shape of it.</label>
+          </div>
+        </div>
+        <div class="mcq"><h4>13. Some people join Heather’s pottery class because they want to</h4>
+          <div class="options">
+            <label><input type="radio" name="L13" value="A"> A create an item that looks very old.</label>
+            <label><input type="radio" name="L13" value="B"> B find something that they are good at.</label>
+            <label><input type="radio" name="L13" value="C"> C make something that will outlive them.</label>
+          </div>
+        </div>
+        <div class="mcq"><h4>14. What does Heather value most about being a potter?</h4>
+          <div class="options">
+            <label><input type="radio" name="L14" value="A"> A its calming effect</label>
+            <label><input type="radio" name="L14" value="B"> B its messy nature</label>
+            <label><input type="radio" name="L14" value="C"> C its physical benefits</label>
+          </div>
+        </div>
+        <div class="mcq"><h4>15. Most of the visitors to Edelmann Pottery</h4>
+          <div class="options">
+            <label><input type="radio" name="L15" value="A"> A bring friends to join courses.</label>
+            <label><input type="radio" name="L15" value="B"> B have never made a pot before.</label>
+            <label><input type="radio" name="L15" value="C"> C try to learn techniques too quickly.</label>
+          </div>
+        </div>
+        <div class="mcq"><h4>16. Heather reminds her visitors that they should</h4>
+          <div class="options">
+            <label><input type="radio" name="L16" value="A"> A put on their aprons.</label>
+            <label><input type="radio" name="L16" value="B"> B change their clothes.</label>
+            <label><input type="radio" name="L16" value="C"> C take off their jewellery.</label>
+          </div>
+        </div>
+        <p style="margin-top:14px"><em>Questions 17–18</em> Choose <strong>TWO</strong> letters, A–E.</p>
+        <div class="mcq"><h4>Which TWO things does Heather explain about kilns?</h4>
+          <div class="options">
+            <label><input type="checkbox" name="L17" value="A"> A what their function is</label>
+            <label><input type="checkbox" name="L17" value="B"> B when they were invented</label>
+            <label><input type="checkbox" name="L17" value="C"> C ways of keeping them safe</label>
+            <label><input type="checkbox" name="L17" value="D"> D where to put one in your home</label>
+            <label><input type="checkbox" name="L17" value="E"> E what some people use instead of one</label>
+          </div>
+        </div>
+        <p style="margin-top:14px"><em>Questions 19–20</em> Choose <strong>TWO</strong> letters, A–E.</p>
+        <div class="mcq"><h4>Which TWO points does Heather make about a potter’s tools?</h4>
+          <div class="options">
+            <label><input type="checkbox" name="L19" value="A"> A Some are hard to hold.</label>
+            <label><input type="checkbox" name="L19" value="B"> B Some are worth buying.</label>
+            <label><input type="checkbox" name="L19" value="C"> C Some are essential items.</label>
+            <label><input type="checkbox" name="L19" value="D"> D Some have memorable names.</label>
+            <label><input type="checkbox" name="L19" value="E"> E Some are available for use by participants.</label>
+          </div>
+        </div>
+      </div>
+
+      <!-- PART 3 -->
+      <div id="part3" style="display:none">
+        <h3>Part 3</h3>
+        <p><em>Questions 21–22</em> Choose <strong>TWO</strong> letters, A–E.</p>
+        <div class="mcq"><h4>Which TWO things do the students both believe are responsible for the increase in loneliness?</h4>
+          <div class="options">
+            <label><input type="checkbox" name="L21" value="A"> A social media</label>
+            <label><input type="checkbox" name="L21" value="B"> B smaller nuclear families</label>
+            <label><input type="checkbox" name="L21" value="C"> C urban design</label>
+            <label><input type="checkbox" name="L21" value="D"> D longer lifespans</label>
+            <label><input type="checkbox" name="L21" value="E"> E a mobile workforce</label>
+          </div>
+        </div>
+        <p style="margin-top:14px"><em>Questions 23–24</em> Choose <strong>TWO</strong> letters, A–E.</p>
+        <div class="mcq"><h4>Which TWO health risks associated with loneliness do the students agree are based on solid evidence?</h4>
+          <div class="options">
+            <label><input type="checkbox" name="L23" value="A"> A a weakened immune system</label>
+            <label><input type="checkbox" name="L23" value="B"> B dementia</label>
+            <label><input type="checkbox" name="L23" value="C"> C cancer</label>
+            <label><input type="checkbox" name="L23" value="D"> D obesity</label>
+            <label><input type="checkbox" name="L23" value="E"> E cardiovascular disease</label>
+          </div>
+        </div>
+        <p style="margin-top:14px"><em>Questions 25–26</em> Choose <strong>TWO</strong> letters, A–E.</p>
+        <div class="mcq"><h4>Which TWO options do both the students express about the evolutionary theory of loneliness?</h4>
+          <div class="options">
+            <label><input type="checkbox" name="L25" value="A"> A It has little practical relevance.</label>
+            <label><input type="checkbox" name="L25" value="B"> B It needs further investigation.</label>
+            <label><input type="checkbox" name="L25" value="C"> C It is misleading.</label>
+            <label><input type="checkbox" name="L25" value="D"> D It should be more widely accepted.</label>
+            <label><input type="checkbox" name="L25" value="E"> E It is difficult to understand.</label>
+          </div>
+        </div>
+        <p style="margin-top:14px"><em>Questions 27–30</em> Choose the correct letter, A, B, or C.</p>
+        <div class="mcq"><h4>27. When comparing loneliness to depression, the students</h4>
+          <div class="options">
+            <label><input type="radio" name="L27" value="A"> A doubt that there will ever be a medical cure for loneliness.</label>
+            <label><input type="radio" name="L27" value="B"> B claim that the link between loneliness and mental health is overstated.</label>
+            <label><input type="radio" name="L27" value="C"> C express frustration that loneliness is not taken more seriously.</label>
+          </div>
+        </div>
+        <div class="mcq"><h4>28. Why do the students decide to start their presentation with an example from their own experience?</h4>
+          <div class="options">
+            <label><input type="radio" name="L28" value="A"> A to explain how difficult loneliness can be</label>
+            <label><input type="radio" name="L28" value="B"> B to highlight a situation that most students will recognise</label>
+            <label><input type="radio" name="L28" value="C"> C to emphasise that feeling lonely is more common for men than women</label>
+          </div>
+        </div>
+        <div class="mcq"><h4>29. The students agree that talking to strangers is a good strategy for dealing with loneliness because</h4>
+          <div class="options">
+            <label><input type="radio" name="L29" value="A"> A it creates a sense of belonging.</label>
+            <label><input type="radio" name="L29" value="B"> B it builds self-confidence.</label>
+            <label><input type="radio" name="L29" value="C"> C it makes people feel more positive.</label>
+          </div>
+        </div>
+        <div class="mcq"><h4>30. The students find it difficult to understand why solitude is considered to be</h4>
+          <div class="options">
+            <label><input type="radio" name="L30" value="A"> A similar to loneliness.</label>
+            <label><input type="radio" name="L30" value="B"> B necessary for mental health.</label>
+            <label><input type="radio" name="L30" value="C"> C an enjoyable experience.</label>
+          </div>
+        </div>
+      </div>
+
+      <!-- PART 4 -->
+      <div id="part4" style="display:none">
+        <h3>Part 4</h3>
+        <p><em>Questions 31–40</em> Complete the notes below. Write <strong>ONE WORD ONLY</strong> for each answer.</p>
+        <div class="mcq">
+          <h4>Reclaiming urban rivers</h4>
+          <ul style="margin:0;padding-left:18px;list-style:disc">
+            <li><strong>Historical Background</strong>
+              <ul style="margin-top:6px">
+                <li>Nearly all major cities were built on a river.</li>
+                <li>Rivers were traditionally used for transport, fishing, and recreation.</li>
+                <li>Industrial development and rising populations later led to:
+                  <ul>
+                    <li>More sewage from houses being discharged into the river.</li>
+                    <li>Pollution from <input id="L31" class="answer" placeholder="31" style="max-width:160px" /> on the river bank.</li>
+                  </ul>
+                </li>
+                <li>In 1957, the River Thames in London was declared biologically <input id="L32" class="answer" placeholder="32" style="max-width:160px" />.</li>
+              </ul>
+            </li>
+            <li style="margin-top:8px"><strong>Recent Improvements</strong>
+              <ul style="margin-top:6px">
+                <li>Seals and even a <input id="L33" class="answer" placeholder="33" style="max-width:160px" /> have been seen in the River Thames.</li>
+                <li>Riverside warehouses are converted to restaurants and <input id="L34" class="answer" placeholder="34" style="max-width:160px" />.</li>
+                <li>In Los Angeles, there are plans to:
+                  <ul>
+                    <li>Build a riverside <input id="L35" class="answer" placeholder="35" style="max-width:160px" />.</li>
+                    <li>Display <input id="L36" class="answer" placeholder="36" style="max-width:160px" /> projects.</li>
+                  </ul>
+                </li>
+                <li>In Paris, <input id="L37" class="answer" placeholder="37" style="max-width:160px" /> are created on the sides of the river every summer.</li>
+              </ul>
+            </li>
+            <li style="margin-top:8px"><strong>Transport Possibilities</strong>
+              <ul style="margin-top:6px">
+                <li>Over 2 billion passengers already travel by <input id="L38" class="answer" placeholder="38" style="max-width:160px" /> in cities round the world.</li>
+                <li>Changes in shopping habits mean the number of deliveries that are made is increasing.</li>
+                <li>Instead of road transport, goods can be transported by large freight barges and electric <input id="L39" class="answer" placeholder="39" style="max-width:160px" /> or, in future, by <input id="L40" class="answer" placeholder="40" style="max-width:160px" />.</li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+        <small class="note">Answers autosave in your browser.</small>
+        <div class="spacer"></div>
+        <button class="btn primary" id="toReading">Proceed to Reading module</button>
+      </div>
+
+      <footer class="part-nav">
+        <button class="btn" data-part="1">Part 1</button>
+        <button class="btn" data-part="2">Part 2</button>
+        <button class="btn" data-part="3">Part 3</button>
+        <button class="btn" data-part="4">Part 4</button>
+      </footer>
+    </div>
+  </section>
+  <!-- READING MODULE (placeholder) -->
+  <section id="screen-reading" class="screen" style="display:none">
+    <div class="card">
+      <h2>Reading – Module</h2>
+      <p>This is a placeholder for the Reading test UI. Click “Start Reading” to continue, or let me know what content you want here and I’ll build it next.</p>
+      <button class="btn primary" id="startReadingBtn">Start Reading</button>
+    </div>
+  </section>
+</main>
+<script>
+// ==== Start flow & autoplay Part 1 audio (after user gesture) ====
+const startBtn = document.getElementById('startBtn');
+if (startBtn) {
+  // Prefill if they return later
+  const nameEl = document.getElementById('fullName');
+  const numEl  = document.getElementById('candidateNumber');
+  const cachedName = localStorage.getItem('sp_candidate_name');
+  const cachedNum  = localStorage.getItem('sp_candidate_number');
+  if (cachedName) nameEl.value = cachedName;
+  if (cachedNum)  numEl.value  = cachedNum;
+
+  startBtn.addEventListener('click', () => {
+    const name = (nameEl?.value || '').trim();
+    const num  = (numEl?.value  || '').trim();
+    if (!name || !num) {
+      alert('Please fill in both fields.');
+      (name ? numEl : nameEl)?.focus();
+      return;
+    }
+    
+
+    // NEW: persist candidate info (keeps all old behavior intact)
+    localStorage.setItem('sp_candidate_name', name);
+    localStorage.setItem('sp_candidate_number', num);
+    localStorage.setItem('sp_test_started_at', new Date().toISOString());
+
+    // Existing behavior: swap to Listening screen
+    document.getElementById('screen-welcome')?.classList.remove('active');
+    document.getElementById('screen-listening')?.classList.add('active');
+
+    // Existing behavior: start the single audio for all 4 parts
+    const a = document.getElementById('audio');
+    if (a) {
+      try {
+        a.currentTime = 0;
+        a.play().catch(() => {
+          // Autoplay fallback if browser blocks sound until a user gesture
+          const resume = () => { a.play().catch(()=>{}); 
+            window.removeEventListener('click', resume);
+            window.removeEventListener('keydown', resume);
+          };
+          window.addEventListener('click', resume, { once: true });
+          window.addEventListener('keydown', resume, { once: true });
+        });
+      } catch {}
+    }
+
+    // Existing behavior: show Part 1 and focus first answer
+    ['1','2','3','4'].forEach(n => {
+      const p = document.getElementById('part'+n);
+      if (p) p.style.display = (n === '1') ? 'block' : 'none';
+    });
+    document.getElementById('L1')?.focus();
+
+    // Guard: prevent accidental double-clicks
+    startBtn.disabled = true; setTimeout(() => startBtn.disabled = false, 1500);
+  });
+}
+
+
+// ==== Persistence helpers ====
+function bindInput(id,key=id){
+  const el=document.getElementById(id); if(!el) return; const k='sp_'+key; el.value=localStorage.getItem(k)||''; el.addEventListener('input',()=>localStorage.setItem(k,el.value));
+}
+
+// Part 1 Q1–10
+[['L1','L1'],['L2','L2'],['L3','L3'],['L4','L4'],['L6name','L5'],['L6loc','L6'],['L7','L7'],['L8','L8'],['L9','L9'],['L10','L10']].forEach(([id,k])=>bindInput(id,k));
+
+// Part 2 radios (Q11–16)
+function saveRadio(name,q){
+  const saved=localStorage.getItem('sp_'+q)||'';
+  document.querySelectorAll('input[type=radio][name='+name+']').forEach(n=>{
+    if(n.value===saved) n.checked=true;
+    n.addEventListener('change',()=>localStorage.setItem('sp_'+q,n.value));
+  });
+}
+['L11','L12','L13','L14','L15','L16'].forEach((nm,i)=>saveRadio(nm,'L'+(11+i)));
+
+// Multi (choose TWO) groups with disable-after-2
+function saveMulti(name,key){
+  const nodes=[...document.querySelectorAll('input[type=checkbox][name='+name+']')];
+  const restore=(localStorage.getItem('sp_'+key)||'').split(',').filter(Boolean);
+  nodes.forEach(n=>{ if(restore.includes(n.value)) n.checked=true; });
+  const sync=()=>{
+    const vals=nodes.filter(n=>n.checked).map(n=>n.value);
+    // keep only first two chosen
+    const kept=vals.slice(0,2);
+    localStorage.setItem('sp_'+key, kept.join(','));
+    const lock = kept.length>=2;
+    nodes.forEach(n=>{ if(!n.checked) n.disabled = lock; else n.disabled=false; });
+  };
+  nodes.forEach(n=>n.addEventListener('change',sync));
+  sync();
+}
+saveMulti('L17','L17'); // Q17–18 stored together
+saveMulti('L19','L19'); // Q19–20 stored together
+
+// Part 3
+saveMulti('L21','L21'); // Q21–22
+saveMulti('L23','L23'); // Q23–24
+saveMulti('L25','L25'); // Q25–26
+['L27','L28','L29','L30'].forEach((nm,i)=>saveRadio(nm,'L'+(27+i)));
+
+// Part 4 Q31–40
+['L31','L32','L33','L34','L35','L36','L37','L38','L39','L40'].forEach(bindInput);
+
+// Part navigation (single audio used for all parts)
+const audioEl = document.getElementById('audio');
+document.querySelectorAll('[data-part]').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const p = btn.getAttribute('data-part');
+    ['1','2','3','4'].forEach(n => {
+      document.getElementById('part'+n).style.display = (n===p) ? 'block' : 'none';
+    });
+    if (audioEl) audioEl.play().catch(()=>{});
+  });
+});
+
+// Try to autoplay on page open
+(function attemptAutoplay(){
+  if (!audioEl) return;
+  const play=()=>audioEl.play().catch(()=>{});
+  if(document.readyState==='complete' || document.readyState==='interactive') play();
+  else document.addEventListener('DOMContentLoaded', play);
+  document.addEventListener('visibilitychange', ()=>{
+    if(document.visibilityState==='visible') play();
+  });
+})();
+
+// Unmute & play when starting test
+//const startBtn = document.getElementById('startBtn');
+if (startBtn) {
+  startBtn.addEventListener('click', () => {
+    audioEl.muted = false;
+    audioEl.play().catch(()=>{});
+  });
+}
+
+
+// Dark mode toggle
+const themeToggle=document.getElementById('themeToggle');
+if(themeToggle){
+  const saved=localStorage.getItem('sp_theme')||'light';
+  document.documentElement.setAttribute('data-theme', saved);
+  themeToggle.checked = saved==='dark';
+  themeToggle.addEventListener('change',()=>{
+    const mode=themeToggle.checked?'dark':'light';
+    document.documentElement.setAttribute('data-theme', mode);
+    localStorage.setItem('sp_theme', mode);
+  });
+}
+
+// Highlighter
+function wrapSelection(color){
+  const sel=window.getSelection(); if(!sel||sel.isCollapsed) return; const range=sel.getRangeAt(0);
+  const span=document.createElement('span'); span.style.background = color==='yellow'? '#fff59d' : '#c8e6c9'; span.style.padding='0 2px';
+  try{range.surroundContents(span);}catch{} sel.removeAllRanges();
+}
+[...document.querySelectorAll('[data-hl]')].forEach(b=>b.addEventListener('click',()=>wrapSelection(b.getAttribute('data-hl'))));
+// Try to autoplay on page open (best-effort; browser may block sound until user interacts)
+(function attemptAutoplay(){
+  const a=document.getElementById('audio');
+  if(!a) return;
+  const play=()=>a.play().catch(()=>{});
+  if(document.readyState==='complete' || document.readyState==='interactive') play();
+  else document.addEventListener('DOMContentLoaded', play);
+  document.addEventListener('visibilitychange', ()=>{ if(document.visibilityState==='visible') play(); });
+})();
+document.querySelectorAll('input').forEach(el => el.setAttribute('autocomplete','off'));
+
+
+// Button to Reading module
+const toReading = document.getElementById('toReading');
+if (toReading) {
+  toReading.addEventListener('click', (e) => {
+    e.preventDefault();
+    const a = document.getElementById('audio');
+    if (a) { a.pause(); a.currentTime = 0; }
+    window.location.href = 'reading1.html'; // new file below
+  });
+};
+
+// Placeholder Start Reading
+const startReadingBtn=document.getElementById('startReadingBtn');
+if(startReadingBtn){ startReadingBtn.addEventListener('click',()=>alert('Reading module will be built next.')); }
+</script>
+</body>
+</html>

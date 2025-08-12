@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>sevenplus — IELTS Writing (Academic)</title>
+<style>
+  :root{--brand-blue:#1aa2c9;--brand-gray:#55595c;--bg:#f7f9fb;--panel:#fff;--text:#1b1f23;--line:#e5e8eb}
+  [data-theme="dark"]{--bg:#0e1116;--panel:#141922;--text:#e6edf3;--line:#2a2f38}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--text);font:15px/1.55 system-ui,-apple-system,Segoe UI,Roboto}
+  .appbar{position:sticky;top:0;background:var(--panel);border-bottom:1px solid var(--line);display:flex;gap:12px;align-items:center;padding:10px 16px;z-index:10}
+  .logo-text{font-size:1.2rem;text-decoration:none}
+  .meta{margin-left:auto;display:flex;gap:10px;align-items:center}
+  .timer{margin-left:8px;padding:.25rem .55rem;border:1px solid var(--line);border-radius:10px;background:var(--panel);font-weight:600;color:var(--brand-blue);min-width:64px;text-align:center}
+  main{max-width:1200px;margin:16px auto;padding:0 16px}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:16px}
+  .toolbar{display:flex;gap:8px;align-items:center;border:1px dashed var(--line);padding:8px;border-radius:10px;margin:10px 0}
+  .swatch{width:20px;height:20px;border-radius:4px;border:1px solid var(--line);cursor:pointer}
+  .swatch.yellow{background:#fff59d}
+  .swatch.green{background:#c8e6c9}
+  .task{margin-top:18px}
+  .task h2{margin:.2rem 0 8px}
+  .split{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  .panel{min-height:360px;max-height:none;overflow:auto;border:1px solid var(--line);border-radius:12px;padding:16px;background:var(--panel)}
+  .promptbox{border:2px solid #000;border-radius:6px;padding:12px;background:rgba(0,0,0,.03)}
+  textarea.answer{width:100%;min-height:420px;border:1px solid var(--line);border-radius:12px;padding:12px;font:15px/1.6 system-ui,-apple-system,Segoe UI,Roboto;resize:vertical;background:var(--panel);color:var(--text)}
+  .wc{margin-top:6px;color:#667085}
+  .wc.low{color:#b54708} /* amber if under word min */
+  .btn{border:1px solid var(--line);background:var(--panel);padding:.55rem .9rem;border-radius:10px;cursor:pointer}
+  .btn.primary{background:var(--brand-blue);color:#fff;border-color:var(--brand-blue)}
+  .submit-fixed{position:fixed;right:16px;bottom:16px;z-index:50}
+  table{border-collapse:collapse;width:100%;margin:8px 0}
+  th,td{border:1px solid var(--line);padding:6px;text-align:left}
+  th{background:rgba(26,162,201,.08)}
+</style>
+</head>
+<body>
+<header class="appbar">
+  <span class="logo-text"><strong style="color:var(--brand-blue)">seven</strong><strong style="color:var(--brand-gray)">plus</strong></span>
+  <span id="timer" class="timer" aria-live="polite">60:00</span>
+  <div class="meta">
+    <label style="display:flex;align-items:center;gap:8px;cursor:pointer">
+      <input id="themeToggle" type="checkbox" />
+      <span>🌓</span>
+    </label>
+  </div>
+</header>
+
+<main>
+  <div class="card">
+    <div class="toolbar"><span>Highlighter:</span>
+      <button class="swatch yellow" data-hl="yellow" title="Yellow"></button>
+      <button class="swatch green" data-hl="green" title="Green"></button>
+    </div>
+
+    <!-- TASK 1 -->
+    <section class="task" id="task1">
+      <h2>TASK 1</h2>
+      <p class="note">You should spend about 20 minutes on this task.</p>
+      <div class="split">
+        <!-- Left: prompt -->
+        <div class="panel">
+          <div class="promptbox">
+            <p><em>The first table below shows changes in the total population of New York City from 1800 to 2000. The second and third tables show changes in the population of the five districts of the city (Manhattan, Brooklyn, Bronx, Queens, Staten Island) over the same period.</em></p>
+            <p><strong>Summarise</strong> the information by selecting and reporting the main features, and make comparisons where relevant.</p>
+          </div>
+          <p>Write at least <strong>150 words</strong>.</p>
+
+          <table>
+            <thead><tr><th colspan="2">New York City (all five districts)</th></tr></thead>
+            <tbody>
+              <tr><th style="width:30%">Year</th><th>Population</th></tr>
+              <tr><td>1800</td><td>79,216</td></tr>
+              <tr><td>1900</td><td>3,437,202</td></tr>
+              <tr><td>2000</td><td>8,009,185</td></tr>
+            </tbody>
+          </table>
+
+          <table>
+            <thead><tr><th colspan="3" style="text-align:center">Manhattan</th></tr></thead>
+            <tbody>
+              <tr><th style="width:30%">Year</th><th>Population</th><th>As percentage (%) of total population</th></tr>
+              <tr><td>1800</td><td>60,515</td><td>76%</td></tr>
+              <tr><td>1900</td><td>1,850,093</td><td>54%</td></tr>
+              <tr><td>2000</td><td>1,538,096</td><td>19%</td></tr>
+            </tbody>
+          </table>
+
+          <table>
+            <thead><tr><th colspan="3" style="text-align:center">Other districts (Brooklyn, Bronx, Queens, Staten Island)</th></tr></thead>
+            <tbody>
+              <tr><th style="width:30%">Year</th><th>Population</th><th>As percentage (%) of total population</th></tr>
+              <tr><td>1800</td><td>18,701</td><td>24%</td></tr>
+              <tr><td>1900</td><td>1,587,109</td><td>46%</td></tr>
+              <tr><td>2000</td><td>6,471,089</td><td>81%</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Right: answer -->
+        <div class="panel">
+          <textarea id="W1" class="answer" placeholder="Write your Task 1 response here..."></textarea>
+          <div id="wc1" class="wc">Words: 0 (min 150)</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TASK 2 -->
+    <section class="task" id="task2">
+      <h2>TASK 2</h2>
+      <p class="note">You should spend about 40 minutes on this task.</p>
+      <div class="split">
+        <!-- Left: prompt -->
+        <div class="panel">
+          <p>Write about the following topic:</p>
+          <div class="promptbox">
+            <p><em>Access to clean water is a basic human right. Therefore every home should have a water supply that is provided free of charge.</em></p>
+            <p><strong>Do you agree or disagree?</strong></p>
+          </div>
+          <p>Give reasons for your answer and include any relevant examples from your own knowledge or experience.</p>
+          <p>Write at least <strong>250 words</strong>.</p>
+        </div>
+
+        <!-- Right: answer -->
+        <div class="panel">
+          <textarea id="W2" class="answer" placeholder="Write your Task 2 essay here..."></textarea>
+          <div id="wc2" class="wc">Words: 0 (min 250)</div>
+        </div>
+      </div>
+    </section>
+  </div>
+</main>
+
+<!-- Submit (bottom-left, immediate send) -->
+<button class="btn primary submit-fixed" id="submitNow">Submit</button>
+
+<script>
+// ===== Dark mode toggle (shared with other pages) =====
+const themeToggle=document.getElementById('themeToggle');
+if(themeToggle){
+  const saved=localStorage.getItem('sp_theme')||'light';
+  document.documentElement.setAttribute('data-theme', saved);
+  themeToggle.checked = saved==='dark';
+  themeToggle.addEventListener('change',()=>{
+    const mode=themeToggle.checked?'dark':'light';
+    document.documentElement.setAttribute('data-theme', mode);
+    localStorage.setItem('sp_theme', mode);
+  });
+}
+
+// ===== Highlighter (yellow/green) =====
+function wrapSelection(color){
+  const sel=window.getSelection(); if(!sel||sel.isCollapsed) return;
+  const range=sel.getRangeAt(0);
+  const span=document.createElement('span');
+  span.style.background = color==='yellow'? '#fff59d' : '#c8e6c9';
+  span.style.padding='0 2px';
+  try{range.surroundContents(span);}catch{} sel.removeAllRanges();
+}
+document.querySelectorAll('[data-hl]').forEach(b=>b.addEventListener('click',()=>wrapSelection(b.getAttribute('data-hl'))));
+
+// ===== Word counters =====
+function countWords(t){ return (t.trim().match(/\b[\w'-]+\b/g)||[]).length; }
+function updateWC(id, min){
+  const el=document.getElementById(id), wc=document.getElementById('wc'+id.slice(1));
+  const n=countWords(el.value); wc.textContent=`Words: ${n} (min ${min})`;
+  wc.classList.toggle('low', n<min);
+}
+['W1','W2'].forEach((id,i)=>{
+  const min = i===0?150:250;
+  const el=document.getElementById(id);
+  // restore from storage
+  const k='sp_'+id; el.value=localStorage.getItem(k)||'';
+  updateWC(id,min);
+  el.addEventListener('input',()=>{ localStorage.setItem(k,el.value); updateWC(id,min); });
+});
+
+// ===== Writing 60-minute timer (separate from Reading) =====
+(function writingCountdown(){
+  const DURATION_MS = 60*60*1000;
+  const END_KEY='sp_writing_end_ts', DONE_KEY='sp_writing_done';
+  const timerEl=document.getElementById('timer');
+
+  let end = parseInt(localStorage.getItem(END_KEY)||'0',10);
+  const now=Date.now();
+  const done=localStorage.getItem(DONE_KEY)==='1';
+
+  if(!end){ end=now+DURATION_MS; localStorage.setItem(END_KEY,String(end)); }
+  else if(end<now && !done){ end=now+DURATION_MS; localStorage.setItem(END_KEY,String(end)); }
+
+  function fmt(n){return String(n).padStart(2,'0');}
+  function tick(){
+    if(localStorage.getItem(DONE_KEY)==='1'){ submitAll(true); return; }
+    const remain = parseInt(localStorage.getItem(END_KEY)||String(end),10)-Date.now();
+    if(remain<=0){ if(timerEl) timerEl.textContent='00:00'; submitAll(false); return; }
+    const s=Math.floor(remain/1000), m=Math.floor(s/60), r=s%60;
+    if(timerEl) timerEl.textContent=`${fmt(m)}:${fmt(r)}`;
+    setTimeout(tick,250);
+  }
+  tick();
+})();
+
+// ===== Collect & Submit (immediate) =====
+function collectListeningFromStorage(){
+  const out={};
+  for(let i=0;i<localStorage.length;i++){
+    const k=localStorage.key(i);
+    if(!k) continue;
+    if(/^sp_L\d+/.test(k) || /^sp_L\d{2}/.test(k) || /^sp_L/.test(k)){ out[k]=localStorage.getItem(k); }
+  }
+  return out;
+}
+function collectReadingFromStorage(){
+  // Prefer consolidated blob if your reading pages saved it
+  const blob=localStorage.getItem('sp_reading_answers');
+  const out = blob? JSON.parse(blob) : {};
+  // Also sweep R_* keys as fallback
+  for(let i=0;i<localStorage.length;i++){
+    const k=localStorage.key(i); if(!k) continue;
+    if(/^R_/.test(k)){ out[k]=localStorage.getItem(k); }
+  }
+  return out;
+}
+function collectWriting(){
+  const t1=document.getElementById('W1').value;
+  const t2=document.getElementById('W2').value;
+  return {
+    task1:t1, task2:t2,
+    wc1: countWords(t1), wc2: countWords(t2)
+  };
+}
+
+function submitAll(fromOtherTab){
+  // Avoid double submits
+  if(localStorage.getItem('sp_writing_done')==='1' && !fromOtherTab){ return; }
+
+  // Lock inputs
+  document.querySelectorAll('textarea,button,input,select').forEach(el=>{
+    if(el.id!=='themeToggle') el.disabled=true;
+  });
+
+  const payload={
+    submittedAt:new Date().toISOString(),
+    listening: collectListeningFromStorage(),
+    reading: collectReadingFromStorage(),
+    writing: collectWriting()
+  };
+  localStorage.setItem('sp_submission', JSON.stringify(payload));
+  localStorage.setItem('sp_writing_done','1');
+
+  // Small visual confirmation overlay
+  const overlay=document.createElement('div');
+  overlay.style.position='fixed';overlay.style.inset='0';overlay.style.background='rgba(0,0,0,.45)';
+  overlay.style.display='flex';overlay.style.alignItems='center';overlay.style.justifyContent='center';overlay.style.zIndex='9999';
+  overlay.innerHTML=`<div style="background:var(--panel);color:var(--text);padding:22px;border-radius:14px;border:1px solid var(--line);max-width:520px;text-align:center">
+    <h3 style="margin:.2rem 0">Submission received</h3>
+    <p>Your Listening, Reading and Writing answers have been saved.</p>
+  </div>`;
+  document.body.appendChild(overlay);
+}
+
+document.getElementById('submitNow').addEventListener('click',()=>submitAll(false));
+</script>
+</body>
+</html>
